@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --maroon: #7B1E1E;
+      --gold: #C9A84C;
+      --cream: #FAF6EF;
+      --dark: #1A1A1A;
+      --card-bg: #ffffff;
+      --shadow: 0 4px 24px rgba(0,0,0,0.10);
+    }
+
+    body {
+      background: var(--cream);
+      font-family: 'Lato', sans-serif;
+      color: var(--dark);
+    }
+
+    .hero {
+      background: var(--maroon);
+      color: white;
+      text-align: center;
+      padding: 60px 20px 50px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(201,168,76,0.07) 0px,
+        rgba(201,168,76,0.07) 1px,
+        transparent 1px,
+        transparent 60px
+      );
+    }
+    .hero-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: var(--gold);
+      position: relative;
+    }
+    .hero-tagline {
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-top: 6px;
+      position: relative;
+    }
+    .hero-divider {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 20px auto;
+      position: relative;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: white;
+      position: relative;
+    }
+    .hero-subtitle {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      margin-top: 10px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .services-section {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    
+    }
+    .section-label {
+      text-align: center;
+      font-size: 2.0rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--maroon);
+      margin-bottom: 30px;
+    }
+    .service-grid {
+    flex-wrap: wrap;
+    padding: 25px 15px;
+    border-radius: 20px;
+    margin: 20px auto;
+    justify-content: space-between;
+    gap:5px;
+    grid-template-columns: repeat(3,1fr);
+    display: grid;
+    margin-top: 15px;
+    width: 100%;
+    }
+
+    .card{
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      margin-top: 20PX;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 36px rgba(123,30,30,0.15);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      box-sizing: border-box;
+    }
+    
+    
+    .card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--maroon);
+      margin-top: 5PX;
+      margin-bottom: 5PX;
+    }
+    .card-duration {
+      font-size: 0.78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-top: 5px;
+      margin-bottom: 5PX;
+    }
+    
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid #f0e8d8;
+    }
+    .card-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    .card-price span {
+      font-size: 0.90rem;
+      font-family: 'Lato', sans-serif;
+      color: black;
+      font-weight: 600;
+      margin-left: 2px;
+    }
+    .card-btn {
+      background: var(--maroon);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      font-family: 'Lato', sans-serif;
+      cursor: pointer;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .card-btn:hover { background: #9b2e2e; }
+
+    .spa-footer {
+      background: var(--maroon);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+    }
+    .spa-footer strong {
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+    }
+
+    @media (max-width: 500px) {
+      .hero-logo { font-size: 2.2rem; }
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
+    </style>
+    <section>
+       <div class="hero">
+<div class="hero-logo">MUGIEZ</div>
+<div class="hero-tagline">Hotel &amp; Apartments.Spa &amp; Wellness</div>
+<div class="hero-divider"></div>
+<div class="hero-title">Our Spa Services</div>
+<p class="hero-subtitle">
+    Unwind,restore, and feel renewed.Our skilled therapists bring you
+    world-class treatments in a calm, professinal setting.
+</p>
+       </div>
+       <section class="Service-section">
+
+        <div class="section-label"> Choose Your treatment</div>
+<div class="service-grid">
+    <div class="card">
+        <img src="Deep Tissue.jpg" alt="">
+            <div class="card-name">DEEP TISSUE</div>
+            <P> Time:1HR & 15mins</P>
+            <p class="card-desc">This is a fully holistic body massage that goes deep into your muscles.If you have pain in your back,necj or shoulders,this will help release it and make you feel better.</p>
+            <div class="card-footer">
+                <div class="card-price"> PRICE:70,000<span>UGX</span></div>
+                </div>
+            </div>
+        
+
+        <div class="card">
+        <img src="Massage.jpg" alt="">
+            <div class="card-name">AROMA</div>
+            <div class="card-duration"> Time:1HR & 15mins</div>
+            <p>This treatment is specifically designed to relax,balance and relieve stress.We use sweet-smelling natural oils during your massage.The good smell plus  the massage calms your mind,reduce stress and lifts your mood.</p>
+            <div class="card-footer">
+                <div class="card-price">PRICE:80,000<span>UGX</span></div>
+                
+                </div>
+            </div>
+        
+
+        <div class="card">
+<img src="swedish.jpg" alt="">
+            <div class="card-name">SWEDISH</div>
+            <div class="card-duration"> Time:1HR</div>
+            <p>A gentle full-body mssage using long smooth strokes.Perfect if you just want to relax, reduce stress and feel completly calm and comfortable.</p>
+            <div class="card-footer">
+                <div class="card-price">PRICE:60,000<span>UGX</span></div>
+                
+                </div>
+        </div>
+
+        <div class="card">
+        <img src="Body Scrub.jpg" alt="">
+        
+            <div class="card-name">BODY SCRUB</div>
+            <div class="card-duration"> Time:1HR & 15mins</div>
+            <p >We rub your whole body with a special scrub that removes dry and dead skin.After this,your skin feels very soft,clean and bright</p>
+            <div class="card-footer">
+                <div class="card-price">PRICE:60,000<span>UGX</span></div>
+                
+                </div>
+        </div>
+
+
+        <div class="card">
+        <img src="hottowel.jpg" alt="">
+            <div class="card-name">HOT TOWEL</div>
+            <div class="card-duration"> Time:1HR & 15mins</div>
+            <p>We use warm wet towels to massage your body.The warmth relaxes your muscle,improves blood flow and makes tension go away quickly</p>
+            <div class="card-footer">
+                <div class="card-price">PRICE:60,000<span>UGX</span></div>
+            
+                </div>
+        </div>
+
+<div class="card">
+        <img src="hot stone.jpg" alt="">
+            <div class="card-name">HOT STONE</div>
+            <div class="card-duration"> Time:1HR & 15mins</div>
+            <p>Smooth stones heated and placed on your body.The warmtg from the stones goes deep down into your muscles and melts away all the tension and tiredness.This full body treatment combines stretching and stroking to stimulate the flow and blood oxygen around the body.</p>
+            <div class="card-footer">
+                <div class="card-price">PRICE:100,000<span>UGX</span></div>
+                
+                </div>
+        </div>
+
+<div class="card">
+        <img src="sauna and spa.jpg" alt="">
+        
+            <div class="card-name">SAUNA & STEAM</div>
+            <div class="card-duration"> Time:1HR & 15mins</div>
+            <p>Ypu sit in a hot room that makes you sweat.The heat cleans your body from inside,opens your skin pores and leaves you feeling very light and fresh</p>
+            <div class="card-footer">
+                <div class="card-price">PRICE:15,000<span>UGX</span></div>
+                </div>
+            
+        </div>
+
+        <div class="card">
+        <img src="neck.jpg" alt="">
+        <div class="card-body">
+            <div class="card-name">HEAD, NECK AND SHOULDER MASSAGE</div>
+            <div class="card-duration">Time:30MINS</div>
+            <p class="card-desc">This therapy is perfomed when the recipient is in a seated position.Special emphasis is put on specific areas of one's body to relieve muscle tension and pain,It also clears the mind</p>
+            <div class="card-footer">
+                <div class="card-price">PRICE:25,000<span>UGX</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+        <img src="Footmassage.jpg" alt="">
+        
+            <div class="card-name">FOOT MASSAGE</div>
+            <div class="card-duration"> Time:30Mins & 1HR</div>
+            <p class="card-desc">This is the deal for anyone who spend the day on there feet or anyone who would like to pamper that most neglected part of the body and relax too.This treatment helps those with arthritis,promotes sleep and relative water retention.</p>
+            <div class="card-footer">
+                <div class="card-price">PRICE:25,000 & 60,000<span>UGX</span></div>
+                </div>
+        </div>
+        </div>
+       </section>
+    </section>
+    
+</body>
+</html>
